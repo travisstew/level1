@@ -2,7 +2,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 
 
-const app= express();
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 
@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static('public'));
 
 //template engine
-app.engine('handlebars', exphbs());
+app.engine('handlebars', exphbs.engine());
 app.set('view engine', 'handlebars');
 
 //body parser middleware 
@@ -19,9 +19,10 @@ app.use(express.json());
 
 //routes
 app.use('/', require('./routes/index'));
-app.use('/user', require('./routes/users'));
+
 
 
 app.listen(PORT,function () { 
   console.log('listening on port ' + PORT);
- });
+
+});
