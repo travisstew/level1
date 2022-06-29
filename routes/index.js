@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const axios = require('axios');
+
 
 
 
@@ -25,8 +25,7 @@ router.get('/', (req,res)=>{
 
 
         axios.request(options).then(function (response) {
-            var listings = response.data.listings;
-            console.log(listings[0].photo);
+          var listings = response.data.listings;
 
           res.render('home',{data:listings});
 
@@ -35,6 +34,11 @@ router.get('/', (req,res)=>{
         });
 
 });
+
+router.get('*',(req,res)=>{
+    res.render('home')
+});
+
 
 
 
