@@ -18,14 +18,16 @@ router.get('/', (req,res)=>{
             sort: 'relevance'
           },
           headers: {
-            'X-RapidAPI-Key': '00b956d7c8msh458ab8d1c20369dp182f31jsn413e2da1e3e2',
+            'X-RapidAPI-Key': process.env.RapidAPI_KEY_realtor ,
             'X-RapidAPI-Host': 'realtor.p.rapidapi.com'
           }
         };
 
+
         axios.request(options).then(function (response) {
             var listings = response.data.listings;
-            console.log(listings);
+            console.log(listings[0].photo);
+
           res.render('home',{data:listings});
 
         }).catch(function (error) {
